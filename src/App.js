@@ -13,7 +13,7 @@ const App = () => {
     setAddresses({ ...addresses, [name]: value });
   };
 
-  const handleMapClick = async () => {
+  const handleSubmit = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/map/plotRoute', {
         method: 'POST',
@@ -34,13 +34,16 @@ const App = () => {
       <div style={{ flex: '1', position: 'relative' }}>
         <MapComponent route={route} />
       </div>
-      <div style={{ padding: '20px', backgroundColor: '#fff' }}>
-        <AddressInput name="address1" value={addresses.address1} onChange={handleAddressChange} placeholder="Choose A Starting Place" />
-        <AddressInput name="address2" value={addresses.address2} onChange={handleAddressChange} placeholder="Choose Destination" />
-        <MapButton onClick={handleMapClick} />
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div style={{ padding: '20px', backgroundColor: '#fff' }}>
+          <AddressInput name="address1" value={addresses.address1} onChange={handleAddressChange} placeholder="Choose A Starting Place" />
+          <AddressInput name="address2" value={addresses.address2} onChange={handleAddressChange} placeholder="Choose Destination" />
+          <MapButton type="submit">MAP</MapButton>
+        </div>
+      </form>
     </div>
   );
+
 };
 
 export default App;

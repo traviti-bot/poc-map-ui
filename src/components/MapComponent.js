@@ -1,10 +1,11 @@
 // MapComponent.js
 import React, { useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
+import config from '../conf/conf'; // Import the config module
 
 const MapComponent = () => {
     useEffect(() => {
-        mapboxgl.accessToken = ''; // Set your access token here
+        mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN; // Set your access token here
         const map = new mapboxgl.Map({
             container: 'map-container', // Container ID
             style: 'mapbox://styles/mapbox/streets-v11', // Map style
